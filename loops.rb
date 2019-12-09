@@ -5,7 +5,11 @@
   puts "#{i}"
 end
 
-# --or--
+value = 1
+while value <=20 do
+  puts value
+  value += 1
+end
 
 count = 1
 until count > 20
@@ -14,6 +18,12 @@ until count > 20
 end
 
 # Write a loop that prints 20 to 1.
+
+value = 1
+while value <=20 do
+  puts value
+  value += 1
+end
 
 count = 20
 until count < 1
