@@ -5,25 +5,27 @@
 
 myArray = [1, 2, 6, 9, 3, 21]
 
-def mult1 array
+def map_mult array
   array.map do |value|
     value * 3
   end
 end
-p mult1 myArray
+p "map"
+p map_mult myArray
 
-myArray.each do |value|
-  p value * 3
+
+def collect_mult array
+  array.collect { |value| value * 3 }
 end
-
-myArray.each { |value| p value * 3 }
+p "collect"
+p collect_mult myArray
 
 # 2. Create a method that takes in a sentence and returns a new sentence with the first letter of each word capitalized. Expected output = "Hello There, How Are You?"
 
 sentence = "hello there, how are you?"
 
-def capitalizer words
-  caps = words.split.map do |value|
+def capitalizer input
+  caps = input.split.map do |value|
     value.capitalize
   end
   caps.join(" ")
