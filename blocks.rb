@@ -101,25 +101,48 @@ p palindrome_checker pal_two
 crazy_word1 = "Hello"
 crazy_word2 = "aLbAtRoSs"
 
+def case_swap string
+  split_string = string.split""
+  swap = split_string.map do |value|
+    if value.upcase == value
+      value.downcase
+    elsif value.downcase == value
+      value.upcase
+    else
+      "error"
+    end
+  end
+  swap.join""
+end
+p case_swap crazy_word1
+p case_swap crazy_word2
 
-# - Create a method that takes in an array of words and returns all the words that start with a particular letter. Ex) Given the array ['Apple', 'Avocado', 'Banana', 'Mango'] and the letter 'a' the method should return ['Apple', 'Avocado']. With the same method, given the letter 'm' should return ['Mango'].
+# Create a method that takes in an array of words and returns all the words that start with a particular letter. Ex) Given the array ['Apple', 'Avocado', 'Banana', 'Mango'] and the letter 'a' the method should return ['Apple', 'Avocado']. With the same method, given the letter 'm' should return ['Mango'].
 
+words = ['Apple', 'Avocado', 'Banana', 'Mango']
 
+def starts_with array, letter
+  array.select do |value|
+    value[0].downcase == letter.downcase
+  end
+end
+p starts_with words, 'a'
+p starts_with words, 'm'
 
 # Stretch Challenges: FIZZBUZZ
 # Write a program that prints the numbers from 1 to 100. For multiples of three print Fizz instead of the number, for multiples of five print Buzz instead of the number, for numbers that are multiples of both three and five print FizzBuzz, for all other numbers print the number.
 
 def fizz_buzz
-  (1..100).map do |num|
+  (1..100).each do |num|
     if num%15 == 0
-      'fizzbuzz'
+      p 'fizzbuzz'
     elsif num%3 == 0
-      'fizz'
+      p 'fizz'
     elsif num%5 == 0
-      'buzz'
+      p 'buzz'
     else
-      num
+      p num
     end
   end
 end
-p fizz_buzz
+fizz_buzz
