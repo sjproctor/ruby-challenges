@@ -20,17 +20,43 @@ p is_even 34
 p is_even 33
 p is_even -5
 
+def is_even2 num
+  if num.even?
+    "#{num} is even"
+  else
+    "#{num} is odd"
+  end
+end
+p is_even2 34
+p is_even2 33
+p is_even2 -5
+
 # Create a method that takes a number as an argument and prints "Valid" if the number is between 1 and 10 (inclusive) and "Invalid" otherwise.
 def inclusive num
   if num >= 1 && num <= 10
     "#{num} is between 1 & 10"
   else
-    "#{num} in not between 1 & 10"
+    "#{num} in invalid"
   end
 end
 p inclusive 3
 p inclusive 19
 p inclusive -8
+
+# Create a method that takes in a string and determines if the string is a palindrome.
+pal_one = 'racecar'
+pal_two = 'tidbit'
+
+def palindrome_checker string
+  if string.reverse == string
+    "#{string.capitalize} is a palindrome."
+  else
+    "#{string.capitalize} is not a palindrome."
+  end
+end
+p "palindrome"
+p palindrome_checker pal_one
+p palindrome_checker pal_two
 
 # Password Checker: User Stories
 # You are writing the user registration page for a secure web site. On the registration page, the user has to enter a user ID and a password, which has to adhere to the to following criteria:
@@ -40,7 +66,7 @@ user_name = gets.chomp
 puts "Enter your password:"
 password = gets.chomp
 
-# - User ID and password cannot be the same.
+# User ID and password cannot be the same.
 def are_same user, pass
   if user == pass
     'Sorry, username and password cannot be the same.'
@@ -50,7 +76,7 @@ def are_same user, pass
 end
 p are_same user_name, password
 
-# - User ID and password have to be at least six characters long.
+# User ID and password have to be at least six characters long.
 def user_long_enough user
   if user.length <= 6 && user.length <= 6
     'Sorry, username and password must be at least 6 characters.'
@@ -60,7 +86,7 @@ def user_long_enough user
 end
 p user_long_enough user_name
 
-# - Password has to contain at least one of: !#$
+# Password has to contain at least one of: !#$
 def password_special_character pass
   characters = ['!', '#', '$']
   if characters.select { |value| pass.include? value }.length == 0
@@ -71,7 +97,7 @@ def password_special_character pass
 end
 p password_special_character password
 
-# - User ID cannot contain the following characters: !#$ or spaces
+# User ID cannot contain the following characters: !#$ or spaces
 def user_special_character user
   characters = ['!', '#', "$", " "]
   if characters.select {|value| user.include? value}.length > 0
@@ -82,7 +108,7 @@ def user_special_character user
 end
 p user_special_character user_name
 
-# - Password cannot be the word "password".
+# Password cannot be the word "password".
 def is_password_password pass
   if pass.downcase == 'password'
     'Sorry, password cannot be password.'

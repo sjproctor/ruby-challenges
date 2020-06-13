@@ -7,58 +7,63 @@
 
 # connecting the testing file
 require_relative 'car_challenge'
+require 'rspec'
 
-# Keep each class in it's own file with it's own test file.
-#
-# Stories
 # Story: As a programmer, I can make a vehicle. Hint: Test that Vehicle.new does not raise any errors.
-#
-# Story: As a programmer, I can make a car. Hint: Test that creating an instance of the new class does not raise any errors.
-#
-# Story: As a programmer, I can tell how many wheels a car has; default is four. Hint: initialize the car to have four wheels, then create a method to return the number of wheels.
-#
-# Story: As a programmer, I can honk the horn. Hint: When I call honk_horn, I get a "BEEP!".
-#
-# Story: As a programmer, I can make a Toyota car. Hint: Test that class Toyota which inherits from class Car can be created.
-#
-# Story: As a programmer, I can honk the horn of a Toyota car which makes the sound "whoop".
-#
-# Story: As a programmer, I can make a Honda car.
-#
-# Story: As a programmer, I can honk the horn of a Honda car - "beep".
-#
-# Story: As a programmer, I can make a Tesla car.
-#
-# Story: As a programmer, I can honk the horn of Tesla - "Beep-bee-bee-boop-bee-doo-weep".
-#
-# Story: As a programmer, I can tell which model year a vehicle is from. Model years never change. Hint: Make model year part of the initialization.
-#
-# Story: As a programmer, I can turn on and off the lights on a given Vehicle. Hint: Create method(s) to allow programmer to turn lights on and off. Which class are the methods in?
-#
-# Story: As a programmer, I can determine if the lights are on or off. Lights start in the off position.
-#
-# Story: As a programmer, I can signal left and right. Turn signals starts off.
-#
-# Story: As a programmer, I can determine the speed of a car. Speed starts at 0 km/h.
-#
-# Story: As a programmer, I can speed my Teslas up by 10 km/h per acceleration.
-#
-# Story: As a programmer, I can slow my Teslas down by 7 km/h per braking.
-#
-# Story: As a programmer, I can speed my Hondas up by 2 km/h per acceleration.
-#
-# Story: As a programmer, I can slow my Hondas down by 1.25 km/h per braking.
-#
-# Story: As a programmer, I can speed my Toyotas up by 7 km/h per acceleration.
-#
-# Story: As a programmer, I can slow my Toyotas down by 5 km/h per braking.
-#
-# Story: As a programmer, I can call upon a car to tell me all it's information. Hint: Implement to_s on one or more classes. You can call a super class's to_s with super.
-#
-# Story: As a programmer, I can store and retrieve all of my cars from a garage. Hint: "Garage" is a noun, "store" and "retrieve" are verbs.
-#
-# Story: As a programmer, I can sort the cars in my garage based on model year.
-#
-# Story: As a programmer, I can sort the cars in my garage based on model. Hint: Sort based on class name.
-#
-# Story: As a programmer, I can sort the cars in my garage based on model and then year. Hint: Find out how the spaceship operator can help you with an array.
+
+describe Car do
+
+  it 'has to be real' do
+    expect{ Car.new }.to_not raise_error
+  end
+
+  it 'has a model' do
+    my_car = Car.new
+    my_car.model = 'Toyota'
+    expect(my_car.model).to eq 'Toyota'
+    expect(my_car.model).to be_a String
+  end
+
+  it 'can be given a color or be unpainted by default' do
+    my_car = Car.new
+    expect(my_car.color).to eq 'unpainted'
+    expect(my_car.color).to be_a String
+    my_red_car = Car.new 'Red'
+    expect(my_red_car.color).to eq 'Red'
+  end
+
+  it "has a speed" do
+    my_car = Car.new
+    expect(my_car.speed).to be 0
+    expect(my_car.speed).to be_a Numeric
+  end
+
+  it "can accelerate by an amount" do
+    my_car = Car.new
+
+    # One way to test:
+    # my_car.accelerate 10
+    # expect(my_car.speed).to be 10
+
+    # Alternative way to test:
+    expect{ my_car.accelerate 10 }.to change{ my_car.speed }.from(0).to(10)
+    expect{ my_car.accelerate 20 }.to change{ my_car.speed }.from(10).to(30)
+  end
+
+  it "can decelerate by an amount" do
+    my_car = Car.new
+    my_car.accelerate 20
+    expect{ my_car.decelerate 10 }.to change{ my_car.speed }.from(20).to(10)
+    expect{ my_car.decelerate 20 }.to change{ my_car.speed }.from(10).to(0)
+  end
+
+end
+
+
+describe 'Garage' do
+
+  it 'has to be real' do
+    expect{ Garage.new }.to_not raise_error
+  end
+
+end

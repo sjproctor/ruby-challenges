@@ -82,21 +82,6 @@ end
 p "odds sorted"
 p odds_sorted my_nums
 
-# Create a method that takes in a string and determines if the string is a palindrome.
-pal_one = 'racecar'
-pal_two = 'tidbit'
-
-def palindrome_checker string
-  if string.reverse == string
-    "#{string.capitalize} is a palindrome."
-  else
-    "#{string.capitalize} is not a palindrome."
-  end
-end
-p "palindrome"
-p palindrome_checker pal_one
-p palindrome_checker pal_two
-
 # Create a method that takes in an array of strings and returns all the strings in reverse casing. All uppercased letters should be returned lowercased and all lowercased letters should be returned uppercased.
 crazy_word1 = "Hello"
 crazy_word2 = "aLbAtRoSs"
