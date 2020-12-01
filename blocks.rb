@@ -1,4 +1,4 @@
-# Challenges
+# Challenges: Blocks
 
 # Write a loop that prints the numbers 1 to 20.
 (1..20).each do |num|

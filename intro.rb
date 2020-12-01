@@ -1,4 +1,4 @@
-# Challenges
+# Challenges: Intro to Ruby
 
 # Arithmetic Challenges
 # Remember that floats are numbers with a decimal point whereas integers have no fractional part so in Ruby, 1 and 1.0 are different types of things with slightly different behaviors.

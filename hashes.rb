@@ -1,4 +1,4 @@
-# Challenges: Practice with Hashes
+# Challenges: Hashes
 
 # As a developer, I can create a hash called my_phone using the Ruby method `.new`.
 p my_phone = Hash.new

@@ -1,4 +1,4 @@
-# Challenges
+# Challenges: Methods
 
 # Create a method called sum_these_numbers which takes two integers as an argument and prints their sum to the screen.
 def sum_these_numbers num1, num2
