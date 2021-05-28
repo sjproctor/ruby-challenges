@@ -1,4 +1,4 @@
-# RUBY OBJECTS AND CLASSESS
+# Challenges: Ruby Objects and Classes
 
 # For the following Tasklist challenge, use initialize and getter methods in your class.
 

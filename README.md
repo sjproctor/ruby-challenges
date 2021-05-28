@@ -9,8 +9,11 @@ WIP: Always updating and evolving, striving to be better.
 - [ Ruby Methods ](./methods.rb)
 - [ Ruby Blocks ](./blocks.rb)
 - [ Ruby Hashes ](./hashes.rb)
+- [ Ruby Objects and Classes ](./classes.rb)
 - [ Ruby Inheritance ](./inheritance.rb)
-- [ RSpec ]()
+- [ RSpec ](./rspec/task.rb)
+- [ RSpec Spec ](./rspec/task_spec.rb)
+- [ Text Based Game ](./text_based_game.rb)
 
 
 

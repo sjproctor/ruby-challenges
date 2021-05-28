@@ -1,4 +1,4 @@
-# Text Based Story Game
+# Challenge: Text Based Story Game
 
 # ---------- Prologue)
 puts "Welcome Detective. It's been awhile since we've seen you. What's your name again?"

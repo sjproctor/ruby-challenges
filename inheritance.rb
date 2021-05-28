@@ -22,6 +22,7 @@ end
 
 animal = Animal.new
 animal.add_year
+puts 'Animal age:'
 p animal.age
 
 module Swim
@@ -44,7 +45,9 @@ class Fish < Animal
 end
 
 fish = Fish.new
+puts 'Fish temp:'
 p fish.temp
+puts 'Fish can swim:'
 p fish.can_swim
 
 # Story: As a developer, I can create a Salmon that inherits from Fish.

@@ -1,7 +1,7 @@
-# Challenges: Methods
+# Challenges: Ruby Methods
 
 # Create a method called sum_these_numbers which takes two integers as an argument and prints their sum to the screen.
-def sum_these_numbers num1, num2
+def sum_these_numbers(num1, num2)
   num1 + num2
 end
 p sum_these_numbers 5, 6
