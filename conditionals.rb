@@ -1,25 +1,32 @@
 # Challenge: Rock, Paper, Scissors
 
-# Write the code that allows two users to input their moves in terminal for "Rock, Paper, Scissors" and determines the winner (or if a tie occurred).
+# Story: As user 1, I can see a prompt in the terminal asking me to type either "rock", "paper", or "scissors".
+# Story: As user 2, I can see a prompt in the terminal asking me to type either "rock", "paper", or "scissors".
+# Story: As a user, I can see a message in the terminal saying if user 1 or user 2 won the round.
+# Story: As a user, I can see a message in the terminal saying if there was a tie.
 
-
-puts 'Player1 enter your choice'
+puts 'The game is Rock, Paper, Scissors'
+puts 'Player 1 enter your name'
+name1 = gets.chomp.capitalize
+puts "#{name1} enter your choice"
 player1 = gets.chomp.downcase
-puts 'Player2 enter your choice'
+puts 'Player 2 enter your name'
+name2 = gets.chomp.capitalize
+puts "#{name2} enter your choice"
 player2 = gets.chomp.downcase
 
 if player1 === 'rock' && player2 === 'scissors'
-  puts "Player1's #{player1} beats #{player2}"
+  puts "#{name1}'s #{player1} beats #{player2}"
 elsif player1 === 'rock' && player2 === 'paper'
-  puts "Player2's #{player2} beats #{player1}"
+  puts "#{name2}'s #{player2} beats #{player1}"
 elsif player1 === 'scissors' && player2 === 'rock'
-  puts "Player2's #{player2} beats #{player1}"
+  puts "#{name2}'s #{player2} beats #{player1}"
 elsif player1 === 'scissors' && player2 === 'paper'
-  puts "Player1's #{player1} beats #{player2}"
+  puts "#{name1}'s #{player1} beats #{player2}"
 elsif player1 === 'paper' && player2 === 'rock'
-  puts "Player1's #{player1} beats #{player2}"
+  puts "#{name1}'s #{player1} beats #{player2}"
 elsif player1 === 'paper' && player2 === 'scissors'
-  puts "Player2's #{player2} beats #{player1}"
+  puts "#{name2}'s #{player2} beats #{player1}"
 elsif player1 === player2
   puts "Tie!"
 end
