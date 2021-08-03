@@ -23,21 +23,19 @@ end
 
 my_nums = [3, 4, 667, 2, 46, 79, 0, -9, 45, 6]
 
-def mult5 array
+def mult5(array)
   array.map do |value|
-    value*5
+    value * 5
   end
 end
 p mult5 my_nums
 
 # Create a method that takes in an array of lowercase words and capitalizes all of the words, permanently modifying the original array.
 
-words_array = ['cactus', 'succulent', 'fern', 'maple']
+words_array = %w[cactus succulent fern maple]
 
-def capitalizer array
-  array.map! do |value|
-    value.upcase
-  end
+def capitalizer(array)
+  array.map!(&:upcase)
 end
 p 'method outcome'
 p capitalizer words_array
@@ -46,67 +44,61 @@ p words_array
 
 # Create a method that takes in an array of numbers and returns the largest number in the array.
 
-def largest array
+def largest(array)
   anchor = array.first
   array.each do |value|
-    if value > anchor
-      anchor = value
-    end
+    anchor = value if value > anchor
   end
   anchor
 end
-p "largest should be 667"
+p 'largest should be 667'
 p largest my_nums
 
 # Create a method that takes in an array of numbers and returns the smallest number in the array.
-def smallest array
+def smallest(array)
   anchor = array.first
   array.each do |value|
-    if value < anchor
-      anchor = value
-    end
+    anchor = value if value < anchor
   end
   anchor
 end
-p "smallest should be -9"
+p 'smallest should be -9'
 p smallest my_nums
 
 # Create a method that takes in an array of numbers and returns only the odd numbers sorted from least to greatest.
 
-def odds_sorted array
-  just_odds = array.select do |value|
-    value.odd?
-  end
+def odds_sorted(array)
+  just_odds = array.select(&:odd?)
   just_odds.sort
 end
-p "odds sorted"
+p 'odds sorted'
 p odds_sorted my_nums
 
 # Create a method that takes in an array of strings and returns all the strings in reverse casing. All uppercased letters should be returned lowercased and all lowercased letters should be returned uppercased.
-crazy_word1 = "Hello"
-crazy_word2 = "aLbAtRoSs"
+crazy_word1 = 'Hello'
+crazy_word2 = 'aLbAtRoSs'
 
-def case_swap string
-  split_string = string.split""
+def case_swap(string)
+  split_string = string.split ''
   swap = split_string.map do |value|
     if value.upcase == value
       value.downcase
     elsif value.downcase == value
       value.upcase
     else
-      "error"
+      'error'
     end
   end
-  swap.join""
+  swap.join ''
 end
 p case_swap crazy_word1
 p case_swap crazy_word2
 
 # Create a method that takes in an array of words and returns all the words that start with a particular letter. Ex) Given the array ['Apple', 'Avocado', 'Banana', 'Mango'] and the letter 'a' the method should return ['Apple', 'Avocado']. With the same method, given the letter 'm' should return ['Mango'].
 
-words = ['Apple', 'Avocado', 'Banana', 'Mango']
+words = %w[Apple Avocado Banana Mango]
 
-def starts_with array, letter
+def starts_with(array, letter)
   array.select do |value|
     value[0].downcase == letter.downcase
   end
@@ -119,11 +111,11 @@ p starts_with words, 'm'
 
 def fizz_buzz
   (1..100).each do |num|
-    if num%15 == 0
+    if (num % 15).zero?
       p 'fizzbuzz'
-    elsif num%3 == 0
+    elsif (num % 3).zero?
       p 'fizz'
-    elsif num%5 == 0
+    elsif (num % 5).zero?
       p 'buzz'
     else
       p num

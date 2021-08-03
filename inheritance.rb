@@ -6,15 +6,19 @@
 # Story: As a developer, I can age my Animal up 1 year at a time.
 # Story: As a developer, I can return my Animal's age, as well as if they're alive. Hint: Use attr_accessor as well as an initialize method.
 
+# Parent class animal
 class Animal
   attr_accessor :alive, :age
+
   def initialize
     @alive = true
     @age = 0
   end
+
   def add_year
-    @age = @age + 1
+    @age += 1
   end
+
   def circle_of_life
     @alive = false
   end
@@ -38,6 +42,7 @@ end
 class Fish < Animal
   include Swim
   attr_accessor :temp
+
   def initialize
     super()
     @temp = 'cold blooded'
@@ -65,19 +70,22 @@ p fish.can_swim
 class Salmon < Fish
   include Swim
   attr_accessor :species, :age
-  def initialize species
-    super()   # must be exactly this syntax
+
+  def initialize(species)
+    super() # must be exactly this syntax
     @species = species
     @age = 0
   end
+
   def add_year
     if @age < 4
-      @age = @age + 1
+      @age += 1
     else
-      circle_of_life     # calling the method from parent class
+      circle_of_life # calling the method from parent class
     end
   end
-  def get_info
+
+  def display_info
     "The #{@species} salmon is a #{@temp} fish and #{@age} years old. #{can_swim}"
   end
 end
@@ -93,8 +101,7 @@ p sockeye.age
 p sockeye.temp
 p sockeye.alive
 p sockeye.species
-p sockeye.get_info
-
+p sockeye.display_info
 
 # Story: As a developer, I can create a Mammal that inherits from Animal.
 
@@ -102,6 +109,7 @@ p sockeye.get_info
 
 class Mammal < Animal
   attr_accessor :temp
+
   def initialize
     super()
     @temp = 'warm blooded'
@@ -122,17 +130,16 @@ p mammal
 class Bear < Mammal
   include Swim
   attr_accessor :age
-  def add_year
-    @age = @age + 1
-  end
-  def get_info
+
+  def display_info
     "The #{@temp} bear is #{@age} years old and #{@alive ? 'alive' : 'dead'}. #{can_swim}"
   end
-  def add_year year
+
+  def add_year(year)
     if @age < 20
-      @age = @age + year
+      @age += year
     else
-      circle_of_life     # calling the method from parent class
+      circle_of_life # calling the method from parent class
     end
   end
 end
@@ -140,7 +147,7 @@ end
 bear = Bear.new
 bear.add_year 20
 bear.add_year 1
-p bear.get_info
+p bear.display_info
 
 # Story: As a developer, I can create a Mammal of my choice.
 
@@ -149,25 +156,26 @@ p bear.get_info
 # Story: As a developer, I can see a message that tells me all of my new Mammal's information.
 
 class Okapi < Mammal
-  def initialize gender
+  def initialize(gender)
     super()
     @home = 'Democratic Republic of the Congo'
     @gender = gender
   end
-  def get_info
+
+  def display_info
     "The okapi is a #{@temp} #{@gender} and is from #{@home}. "
   end
 end
 
 okapi = Okapi.new 'female'
-p okapi.get_info
-
+p okapi.display_info
 
 # Stretch Challenges
 # Story: As a developer, I can keep a collection of two of each Animal. Hint: You'll want to add your Animals into an array.
 
 class Zoo
   attr_accessor :animals
+
   def initialize
     @animals = []
   end
@@ -180,9 +188,14 @@ san_diego_zoo.animals << okapi
 p san_diego_zoo.animals
 
 # Story: As a developer, I can sort my collection of Animals based on age. Hint: Find out how the spaceship operator can help you with an array.
-p san_diego_zoo.animals.map{|value| value.age}.sort {|a, b| a <=> b}
-
+p mapped_animals = san_diego_zoo.animals.map(&:age)
+p mapped_animals.sort { |a, b| a <=> b }
 
 # Super Stretch Challenge
 # Story: As a developer, I can utilize a Ruby module to help DRY up my code. I can create a swim method inside of my module that will apply to Animals who can swim. This method should return "I can swim!"
 # Hint: Look into module mix ins. Since not all animals can swim, only certain Animals will have access to this module.
+
+# Rubocop error:
+# inheritance.rb:191:1: W: Lint/AmbiguousBlockAssociation: Parenthesize the param san_diego_zoo.animals.map(&:age).sort { |a, b| a <=> b } to make sure that the block will be associated with the san_diego_zoo.animals.map(&:age).sort method call.
+# p san_diego_zoo.animals.map(&:age).sort { |a, b| a <=> b }
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

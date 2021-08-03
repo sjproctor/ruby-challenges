@@ -19,11 +19,11 @@ def game_over(detective)
   puts "Try again, #{detective}? (Y/N)"
   restart = gets.chomp.downcase
 
-  unless restart == 'y' || restart == 'yes'
+  if %w[y yes].include?(restart)
+    load 'text_based_game.rb'
+  else
     puts "Goodbye, #{detective}."
     exit
-  else
-    load 'text_based_game.rb'
   end
 end
 
@@ -31,16 +31,17 @@ end
 
 def chapter3
   puts 'You ask who she suspects.'
-  puts  "'It was the gardener, or it could have been my stepmother, or my evil twin,' she cries."
+  puts "'It was the gardener, or it could have been my stepmother, or my evil twin,' she cries."
   puts 'Who do you wish to investigate first?'
   puts  'Type 1 for Gardener, 2 for Stepmother, or 3 for Evil Twin: '
 
   while chose = gets.chomp.to_i
-    if chose == 1
+    case chose
+    when 1
       chapter5
-    elsif chose == 2
-      mom_path()
-    elsif chose == 3
+    when 2
+      mom_path
+    when 3
       puts 'Evil twin? What is this, a telanovela?'
       game_over(detective)
     else
@@ -61,9 +62,10 @@ def chapter2
   puts "Type 'yes' if you do, 'no' if you don't"
 
   while chose = gets.chomp.downcase
-    if chose == "yes" || chose == 'y'
+    case chose
+    when 'yes', 'y'
       chapter3
-    elsif chose == "no" || chose == 'n'
+    when 'no', 'n'
       puts 'Well, she was a real shady dame.'
       game_over(detective)
     else
@@ -94,7 +96,7 @@ def chapter1(detective, partner)
   puts "Type 'yes' to hear more."
 
   continue = gets.chomp.downcase
-  if continue == "yes" || continue == "y"
+  if %w[yes y].include?(continue)
     chapter2
   else
     puts 'Well, it seems you have had too much scotch to help anyone tonight. Goodbye!'

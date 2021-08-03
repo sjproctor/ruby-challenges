@@ -20,8 +20,6 @@
 #   end
 # end
 
-
-
 # Story: As a developer, I can create a Task.
 class Task
   def initialize
@@ -29,21 +27,21 @@ class Task
     @description = ''
     @status = 'in progress'
   end
+
   # Story: As a developer, I can give a Task a title and retrieve it.
-  def title
-    @title
-  end
+  attr_reader :title
+
   # Story: As a developer, I can give a Task a description and retrieve it.
-  def description
-    @description
-  end
+  attr_reader :description
+
   # Story: As a developer, I can mark a Task done.
   def status
     @status = 'done'
   end
+
   # Story: As a developer, when I print a Task that is done, its status is shown.
   def to_s
-    "#{@status}"
+    @status.to_s
   end
 end
 
@@ -53,25 +51,24 @@ class Tasklist
     # tasklist is an array of tasks
     @tasklist = []
   end
-  def tasklist
-    # method that returns the array of tasks
-    @tasklist
-  end
-  def add_tasks task
+
+  attr_reader :tasklist
+
+  def add_tasks(task)
     # method that adds tasks to the tasklist array
     @tasklist << task
   end
+
   # Story: As a developer with a TaskList, I can get the completed items.
   def completed_tasks
     @tasklist.select { |value| value.status == 'done' }
   end
+
   # Story: As a developer with a TaskList, I can get the incomplete items.
   def incompleted_tasks
     @tasklist.select { |value| value.status == 'in progress' }
   end
 end
-
-
 
 # Epic: Due Date
 # Story: As a developer, I can create a DueDateTask, which is-a Task that has-a due date. Hint: Use the built-in Ruby Date class

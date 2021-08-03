@@ -5,21 +5,20 @@
 # Then run the test(s) and see that they fail.
 # Then implement the class/method, with comments, so that it passes the tests one at a time and you understand what you have created.
 
-# connecting the testing file to rspec and the task 
+# connecting the testing file to rspec and the task
 require_relative 'task'
 require 'rspec'
 
 # creating a describe block for the class Task
-describe "Task" do
-
+describe 'Task' do
   # Story: As a developer, I can create a Task.
-  it "As a developer, I can create a Task." do
+  it 'As a developer, I can create a Task.' do
     # expecting a class to be created, wrapped in {} to reference the class
-    expect{ Task.new }.to_not raise_error
+    expect { Task.new }.to_not raise_error
   end
 
   # Story: As a developer, I can give a Task a title and retrieve it.
-  it "As a developer, I can give a Task a title and retrieve it." do
+  it 'As a developer, I can give a Task a title and retrieve it.' do
     # creating a local variable that is an object (an instance of the class)
     my_task = Task.new
     # expecting the instance of task to have a method called title and the output of the method to be of class String, wrapped in () to reference the method
@@ -27,7 +26,7 @@ describe "Task" do
   end
 
   # Story: As a developer, I can give a Task a description and retrieve it.
-  it "As a developer, I can give a Task a description and retrieve it." do
+  it 'As a developer, I can give a Task a description and retrieve it.' do
     # the variable my_task is local to the it/end block
     my_task = Task.new
     # expecting the instance of task to have a method called description and the output of the method to be of class String, wrapped in () to reference the method
@@ -35,34 +34,32 @@ describe "Task" do
   end
 
   # Story: As a developer, I can mark a Task done.
-  it "As a developer, I can mark a Task done." do
+  it 'As a developer, I can mark a Task done.' do
     my_task = Task.new
     # expecting the status method to update the status from not done to done
     expect(my_task.status).to eq 'done'
   end
 
   # Story: As a developer, when I print a Task that is done, its status is shown.
-  it "As a developer, when I print a Task that is done, its status is shown." do
+  it 'As a developer, when I print a Task that is done, its status is shown.' do
     my_task = Task.new
     my_task.status
     # expecting a to_s method to return all the information about the task
     expect(my_task.to_s).to eq 'done'
   end
-
 end
 
 # Stretch
 
 # creating a describe block for the class Tasklist
-describe "Tasklist" do
-
-  it "As a developer, I can create a Tasklist." do
+describe 'Tasklist' do
+  it 'As a developer, I can create a Tasklist.' do
     # expecting a class to be created, wrapped in {} to reference the class
-    expect{ Tasklist.new }.to_not raise_error
+    expect { Tasklist.new }.to_not raise_error
   end
 
   # Story: As a developer, I can add all of my Tasks to a Tasklist.
-  it "As a developer, I can add all of my Tasks to a Tasklist." do
+  it 'As a developer, I can add all of my Tasks to a Tasklist.' do
     # creating local variables for instances of Task and Tasklist
     my_task = Task.new
     my_tasklist = Tasklist.new
@@ -75,7 +72,7 @@ describe "Tasklist" do
   end
 
   # Story: As a developer with a Tasklist, I can get the completed items.
-  it "As a developer with a Tasklist, I can get the completed items." do
+  it 'As a developer with a Tasklist, I can get the completed items.' do
     # creating local variables for instances of Task and Tasklist
     my_task = Task.new
     my_tasklist = Tasklist.new
@@ -88,7 +85,7 @@ describe "Tasklist" do
   end
 
   # Story: As a developer with a Tasklist, I can get the incomplete items.
-  it "As a developer with a Tasklist, I can get the incomplete items." do
+  it 'As a developer with a Tasklist, I can get the incomplete items.' do
     # creating local variables for instances of Task and Tasklist
     my_task = Task.new
     my_tasklist = Tasklist.new

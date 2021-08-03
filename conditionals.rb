@@ -28,5 +28,5 @@ elsif player1 === 'paper' && player2 === 'rock'
 elsif player1 === 'paper' && player2 === 'scissors'
   puts "#{name2}'s #{player2} beats #{player1}"
 elsif player1 === player2
-  puts "Tie!"
+  puts 'Tie!'
 end

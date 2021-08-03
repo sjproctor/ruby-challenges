@@ -10,7 +10,7 @@ p 6 * 4
 p 9 / 3
 p 5 / 2
 p 5 / 2.5
-p 4 ** 3
+p 4**3
 
 # Find the remainder of dividing two numbers using the modulo operator (%).
 p 9 % 3
@@ -42,7 +42,7 @@ p someones_favorite
 p someones_favorite - my_favorite_number
 
 # Change the value of my favorite number to be 26 times its current value.
-p my_favorite_number = my_favorite_number * 26
+p my_favorite_number *= 26
 
 # Strings Challenges
 
@@ -57,14 +57,14 @@ p my_name.upcase
 # .reverse
 p my_name.reverse
 # .include?
-p my_name.include?'e'
-p my_name.downcase.include?'s'
+p my_name.include? 'e'
+p my_name.downcase.include? 's'
 # .capitalize
 p my_name.capitalize
 
 # Arrays Challenges
 # Create an array that contains the name of at least five TV shows
-my_tv_shows = ["Friends", "Parks and Rec", "Scrubs", "The Office", "Brooklyn 99", "The Simpsons"]
+my_tv_shows = ['Friends', 'Parks and Rec', 'Scrubs', 'The Office', 'Brooklyn 99', 'The Simpsons']
 
 # Find the length of the array
 p my_tv_shows.length

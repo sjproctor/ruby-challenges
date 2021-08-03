@@ -3,7 +3,7 @@
 # Programmer Stories
 # Story: As a programmer, I can make a car. Hint: Create a class called Car, and create a variable called my_car which contains an object of class Car.
 class Car
-  def initialize model, year
+  def initialize(model, year)
     @model = model
     @year = year
     @wheels = 4
@@ -11,26 +11,29 @@ class Car
     @turn_signal = 'off'
     @speed = 0
   end
-  def wheels
-    # getter method for wheels
-    @wheels
-  end
+
+  attr_reader :wheels
+
   def get_model
     # getter method for model
     @model
   end
+
   def get_year
     # getter method for year
     @year
   end
+
   def lights
     # when called will toggle the light variable
     @lights == 'off' ? 'on' : 'off'
   end
+
   def turn_signal
-    #when called will toggle the turn_signal variable
+    # when called will toggle the turn_signal variable
     @turn_signal == 'off' ? 'on' : 'off'
   end
+
   def to_s
     # method that describes all the information about a car
     "The car is a #{@year} #{@model} the lights are #{@lights} with #{@wheels} wheels going #{@speed} mph and the turn signal is #{@turn_signal}."
@@ -49,14 +52,11 @@ my_car = Car.new('generic car', 'my_car year')
 
 # Story: As a programmer, I can make a Tesla car. Hint: Create an variable called my_tesla which is an instance of class Tesla which inherits from class Car.
 class Tesla < Car
-  def initialize model, year
-    # calling super will allow all the instance variables and methods to be inherited from class Car
-    super
-  end
   def accelerate
     # accelerate method that is specific to Tesla
-    @speed +=10
+    @speed += 10
   end
+
   def brake
     # brake method that is specific to Tesla
     if @speed <= 7
@@ -64,7 +64,6 @@ class Tesla < Car
     else
       @speed -= 7
     end
-
   end
 end
 
@@ -77,14 +76,11 @@ my_tesla = Tesla.new('s3', 2017)
 
 # Story: As a programmer, I can make a Toyota car.
 class Toyota < Car
-  def initialize model, year
-    # calling super will allow all the instance variables and methods to be inherited from class Car
-    super
-  end
   def accelerate
     # accelerate method that is specific to Toyota
-    @speed +=7
+    @speed += 7
   end
+
   def brake
     # brake method that is specific to Toyota
     if @speed <= 5
@@ -105,14 +101,11 @@ my_toyota = Toyota.new('4Runner', 2004)
 # Story: As a programmer, I can make a Honda car.
 
 class Honda < Car
-  def initialize model, year
-    # calling super will allow all the instance variables and methods to be inherited from class Car
-    super
-  end
   def accelerate
     # accelerate method that is specific to Toyota
-    @speed +=5
+    @speed += 5
   end
+
   def brake
     # brake method that is specific to Honda
     if @speed <= 2
@@ -162,20 +155,18 @@ my_tesla.brake
 my_tesla.brake
 # => 16
 
-
 # Story: As a programmer, I can speed my Toyotas up by 7 per acceleration.
 my_toyota.accelerate
 # => 7
 my_toyota.accelerate
 # => 14
 
-
 # Story: As a programmer, I can slow my Toyotas down by 5 per braking.
 my_toyota.brake
 # => 9
 my_toyota.brake
 # => 4
-p "here"
+p 'here'
 p my_toyota.brake
 
 # Story: As a programmer, I can speed my Hondas up by 5 per acceleration.
@@ -212,12 +203,15 @@ class Garage
     @car_models = []
     @car_years = []
   end
+
   def garage
     @car_collection
   end
+
   def models
     @car_models
   end
+
   def years
     @car_years
   end
@@ -246,14 +240,13 @@ my_garage.garage << my_other_honda.to_s
 my_garage.models << my_other_honda.get_model
 my_garage.years << my_other_honda.get_year
 
-
 # Story: As a programmer, I can sort my collection of cars based on model.
 p my_garage.garage
 p my_garage.models
 p my_garage.years
 
-p my_garage.models.sort! {|a, b| a <=> b}
+p my_garage.models.sort! { |a, b| a <=> b }
 
 # Story: As a programmer, I can sort my collection of cars based on year. Hint: Find out how the spaceship operator can help you with an array.
 
-p my_garage.years.sort! {|a, b| a <=> b}
+p my_garage.years.sort! { |a, b| a <=> b }

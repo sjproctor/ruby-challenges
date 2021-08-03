@@ -9,18 +9,20 @@
 # As a developer, I can initialize each instance of class Task with a status that has a default value of 'incomplete'.
 # As a developer, I can update the status of each instance of class Task when the task has been completed.
 
-
 class Task
-  def initialize title
+  def initialize(title)
     @title = title
     @status = 'Incomplete'
   end
+
   def get_title
     @title
   end
+
   def get_status
     @status
   end
+
   def complete_task
     @status = 'Done!'
   end
@@ -44,9 +46,6 @@ pay_bills.get_status
 pay_bills.complete_task
 pay_bills.get_status
 
-
-
-
 # For the following Color Palette challenge use the `attr_accessor` method.
 # As a developer, I can create a class called ColorPalette.
 # As a developer, I can create three instances (objects) of class ColorPalette. (e.g green = ColorPalette.new)
@@ -55,14 +54,15 @@ pay_bills.get_status
 # As a developer, I can create a method called `all_colors` that when called will print a sentence telling me the three colors of a given palette.
 # As a developer, I can change one or more colors of a given palette.
 
-
 class ColorPalette
   attr_accessor :color1, :color2, :color3
-  def initialize color1, color2, color3
+
+  def initialize(color1, color2, color3)
     @color1 = color1
     @color2 = color2
     @color3 = color3
   end
+
   def all_colors
     "The colors of this palette are #{@color1}, #{@color2}, and #{@color3}."
   end
